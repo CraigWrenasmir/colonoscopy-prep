@@ -31,7 +31,6 @@
   }
   .wrap { max-width: 680px; margin: 0 auto; padding: 0 16px 80px; }
 
-  /* Sticky day banner */
   .banner {
     position: sticky; top: 0; z-index: 10;
     background: var(--teal); color: #fff;
@@ -58,7 +57,18 @@
     margin: 16px 0; box-shadow: var(--shadow);
   }
 
-  /* Food checker */
+  .doctor-card {
+    background: linear-gradient(160deg, #fff 0%, #ecf2f1 100%);
+    display: grid; gap: 10px;
+  }
+  .doctor-card .docname { font-size: 18px; font-weight: 600; color: var(--teal); }
+  .doctor-card .docrole { font-size: 14px; color: var(--ink-soft); }
+  .doctor-card .info-row { display: flex; gap: 8px; font-size: 14px; }
+  .doctor-card .info-row span:first-child { color: var(--ink-soft); min-width: 80px; }
+  .doctor-card .info-row strong { color: var(--ink); }
+  .doctor-card a { color: var(--teal); text-decoration: none; }
+  .doctor-card a:hover { text-decoration: underline; }
+
   .checker { border: 2px solid var(--teal-pale); }
   .checker h2 { margin-top: 0; display: flex; align-items: center; gap: 8px; }
   .checker h2::before {
@@ -97,7 +107,6 @@
   }
   .suggestion:hover { background: #d5e3e1; }
 
-  /* Today plan */
   .today-plan ul { list-style: none; padding: 0; }
   .today-plan li {
     padding: 10px 0 10px 30px; border-bottom: 1px solid var(--line);
@@ -108,10 +117,7 @@
     content: ""; position: absolute; left: 6px; top: 17px;
     width: 8px; height: 8px; background: var(--teal-soft); border-radius: 50%;
   }
-  .today-plan li.done { color: var(--ink-soft); text-decoration: line-through; opacity: .65; }
-  .today-plan li.done::before { background: #c8c2b3; }
 
-  /* Picoprep */
   .picoprep-card { background: linear-gradient(160deg, #fff 0%, #faf3e3 100%); }
   .admit-input {
     display: flex; align-items: center; gap: 10px;
@@ -150,7 +156,6 @@
     content: "✓"; color: #fff; font-size: 16px; font-weight: 700;
   }
 
-  /* Timetable */
   .timetable { display: grid; gap: 10px; }
   .day-row {
     background: #fff; border-radius: 12px; padding: 14px 16px;
@@ -162,7 +167,6 @@
   .day-row .day-date { font-size: 17px; font-weight: 600; margin: 2px 0 6px; }
   .day-row .day-do { font-size: 15px; }
 
-  /* Food lists */
   .food-grid { display: grid; gap: 12px; }
   @media (min-width: 560px) { .food-grid { grid-template-columns: 1fr 1fr; } }
   .food-box { padding: 14px; border-radius: 10px; }
@@ -171,7 +175,6 @@
   .food-box h3 { margin-top: 0; }
   .food-box ul { font-size: 14px; }
 
-  /* Hydration */
   .hydration { text-align: center; }
   .hydration h2 { margin-bottom: 4px; }
   .glass-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px 0; }
@@ -185,18 +188,24 @@
   .hydration .count { font-size: 28px; font-weight: 600; color: var(--teal); margin: 6px 0; }
   .hydration .reset { background: none; border: none; color: var(--ink-soft); font-size: 13px; cursor: pointer; text-decoration: underline; padding: 4px 8px; font-family: inherit; }
 
-  /* Footer */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type=checkbox] {
+    appearance: none; -webkit-appearance: none;
+    width: 22px; height: 22px; border: 2px solid var(--teal); border-radius: 6px;
+    background: #fff; cursor: pointer; flex-shrink: 0; margin-top: 2px;
+    display: grid; place-items: center;
+  }
+  .checklist input[type=checkbox]:checked { background: var(--teal); }
+  .checklist input[type=checkbox]:checked::after {
+    content: "✓"; color: #fff; font-size: 14px; font-weight: 700;
+  }
+  .checklist label { cursor: pointer; flex: 1; }
+  .checklist input:checked + label { color: var(--ink-soft); text-decoration: line-through; }
+
   footer { text-align: center; color: var(--ink-soft); font-size: 13px; padding: 24px 0 0; }
   footer a { color: var(--teal); }
-
-  .pill {
-    display: inline-block; padding: 2px 10px; border-radius: 12px;
-    font-size: 12px; font-weight: 600; letter-spacing: .03em;
-    background: var(--sand); color: var(--ink);
-  }
-  .pill.ok { background: var(--ok-bg); color: var(--ok); }
-  .pill.no { background: var(--no-bg); color: var(--no); }
-  .pill.warn { background: var(--warn-bg); color: var(--warn); }
 
   details { margin: 10px 0; }
   summary { cursor: pointer; font-weight: 500; padding: 6px 0; }
@@ -207,6 +216,15 @@
     border-left: 4px solid var(--warn);
     padding: 12px 14px; border-radius: 8px; margin: 12px 0;
     font-size: 14px;
+  }
+  .alert.important {
+    background: var(--no-bg); color: var(--no); border-left-color: var(--no);
+  }
+
+  .key-fact {
+    display: inline-block; padding: 8px 14px; background: var(--teal-pale);
+    color: var(--teal); border-radius: 10px; font-size: 14px;
+    margin: 4px 6px 4px 0; font-weight: 500;
   }
 </style>
 </head>
@@ -223,21 +241,34 @@
   </header>
 
   <h1>Colonoscopy prep</h1>
-  <p class="muted">Procedure: <strong>Wed 27 May 2026</strong> · Beechnut Medical Rooms</p>
+  <p class="muted">Procedure: <strong>Wed 27 May 2026</strong> · Morning</p>
+
+  <!-- DOCTOR / HOSPITAL -->
+  <section class="card doctor-card">
+    <div>
+      <div class="docname">Dr Adeeb Majid</div>
+      <div class="docrole">MBBS, MS, FRACS, ANZHPBA Fellowship · Hepatobiliary, Pancreatic, Upper GI &amp; Oncological Surgeon</div>
+    </div>
+    <div class="info-row"><span>Hospital</span><strong>Newcastle Private Hospital</strong></div>
+    <div class="info-row"><span>Address</span><strong>Hunter Surgery, Cambridge Bldg, Suite 3 Ground Floor, New Lambton Heights NSW 2305</strong></div>
+    <div class="info-row"><span>Rooms</span><strong>Charlestown Medical Hub, Level 2 Suite 211 H+, 99 Pacific Hwy, Charlestown NSW 2290</strong></div>
+    <div class="info-row"><span>Phone</span><a href="tel:0488379080"><strong>0488 379 080</strong></a></div>
+    <div class="info-row"><span>Email</span><a href="mailto:drmajid@huntersurgery.com">drmajid@huntersurgery.com</a></div>
+  </section>
 
   <!-- FOOD CHECKER -->
   <section class="card checker">
     <h2>Can I eat this?</h2>
     <p class="muted" style="margin-top:0">Type any food or drink. I'll check it against today's rules.</p>
-    <input id="foodInput" type="text" placeholder="e.g. banana, white toast, apple juice…" autocomplete="off" autocapitalize="off">
+    <input id="foodInput" type="text" placeholder="e.g. wholemeal toast, strawberries, lime cordial…" autocomplete="off" autocapitalize="off">
     <div id="foodResult"></div>
     <div class="suggestions">
-      <button class="suggestion" data-q="white bread">white bread</button>
-      <button class="suggestion" data-q="banana">banana</button>
-      <button class="suggestion" data-q="apple juice">apple juice</button>
-      <button class="suggestion" data-q="coffee">coffee</button>
-      <button class="suggestion" data-q="weet-bix">weet-bix</button>
-      <button class="suggestion" data-q="chicken">chicken</button>
+      <button class="suggestion" data-q="wholemeal bread">wholemeal bread</button>
+      <button class="suggestion" data-q="strawberries">strawberries</button>
+      <button class="suggestion" data-q="orange">orange</button>
+      <button class="suggestion" data-q="cheese">cheese</button>
+      <button class="suggestion" data-q="hot chips">hot chips</button>
+      <button class="suggestion" data-q="lime cordial">lime cordial</button>
     </div>
   </section>
 
@@ -250,19 +281,14 @@
   <!-- PICOPREP -->
   <section class="card picoprep-card">
     <h2>Picoprep schedule</h2>
-    <p class="muted" style="margin-top:0">Three sachets of Picoprep Orange — dissolve each in ~250ml warm water, drink slowly over 5–10 min, then 3–4 glasses of clear fluid after.</p>
-
-    <div class="admit-input">
-      <label for="admitTime">Your admission time Wed 27 May</label>
-      <input id="admitTime" type="time" value="09:30">
-    </div>
+    <p class="muted" style="margin-top:0">Three sachets of Picoprep (15.5g) — <strong>all on Tuesday 26 May</strong>. Dissolve each in a 250ml glass of warm water, stir, chill in fridge for 30 min if preferred, then drink slowly but completely.</p>
 
     <div class="dose">
       <div class="dose-num">1</div>
       <div class="dose-body">
-        <div class="dose-time">3:00 pm</div>
-        <div class="dose-when">Tue 26 May</div>
-        <div class="dose-note">First sachet — afternoon dose</div>
+        <div class="dose-time">1:00 pm</div>
+        <div class="dose-when">Tue 26 May · early afternoon</div>
+        <div class="dose-note">First sachet. Diarrhoea usually starts within 3 hours.</div>
       </div>
       <input type="checkbox" class="dose-check" data-dose="1" aria-label="Mark dose 1 done">
     </div>
@@ -270,9 +296,9 @@
     <div class="dose">
       <div class="dose-num">2</div>
       <div class="dose-body">
-        <div class="dose-time">6:00 pm</div>
-        <div class="dose-when">Tue 26 May</div>
-        <div class="dose-note">Second sachet — early evening dose</div>
+        <div class="dose-time">5:00 pm</div>
+        <div class="dose-when">Tue 26 May · late afternoon</div>
+        <div class="dose-note">Second sachet. Keep sipping clear fluids between doses.</div>
       </div>
       <input type="checkbox" class="dose-check" data-dose="2" aria-label="Mark dose 2 done">
     </div>
@@ -280,22 +306,62 @@
     <div class="dose">
       <div class="dose-num">3</div>
       <div class="dose-body">
-        <div class="dose-time" id="dose3Time">5:00 am</div>
-        <div class="dose-when" id="dose3When">Wed 27 May · 4½ hrs before admission</div>
-        <div class="dose-note">Third sachet — final dose. Water is OK after this; otherwise nil by mouth.</div>
+        <div class="dose-time">9:00 pm</div>
+        <div class="dose-when">Tue 26 May · evening</div>
+        <div class="dose-note">Third &amp; final sachet. Keep drinking clear fluids until 6 hrs before your appointment.</div>
       </div>
       <input type="checkbox" class="dose-check" data-dose="3" aria-label="Mark dose 3 done">
     </div>
 
     <div class="alert">
-      Apply lanolin or similar cream to the anal area before starting — helps avoid soreness.
+      After each dose, drink at least <strong>1 glass of water (or clear fluid) per hour, or 1 litre total</strong>, to prevent dehydration.
     </div>
+  </section>
+
+  <!-- DAY OF PROCEDURE -->
+  <section class="card">
+    <h2>Wednesday — day of procedure</h2>
+
+    <div class="admit-input">
+      <label for="admitTime">Appointment time</label>
+      <input id="admitTime" type="time" value="09:30">
+    </div>
+
+    <p>Fast for <strong>6 hours before your appointment</strong> — no food or drink, including water.</p>
+    <p class="key-fact" id="fastFromLine">Stop all food &amp; drink: <strong>3:30 am Wed</strong></p>
+
+    <ul>
+      <li>Take your usual tablets with <strong>only a sip of water</strong></li>
+      <li>If diabetic: bring your morning dose of insulin/tablets with you</li>
+      <li>Be prepared to be at the hospital for <strong>~6 hours total</strong></li>
+      <li>You'll be in recovery for 1–2 hours after the procedure</li>
+    </ul>
+
+    <div class="alert important">
+      <strong>Critical:</strong> A responsible adult must accompany you home AND stay with you overnight. No driving, signing legal documents, or operating machinery for <strong>24 hours</strong> after.
+    </div>
+  </section>
+
+  <!-- PRE-PROCEDURE CHECKLIST -->
+  <section class="card">
+    <h2>Pre-procedure checklist</h2>
+    <ul class="checklist" id="checklist">
+      <li><input type="checkbox" id="cl-picoprep"><label for="cl-picoprep">Picked up 3 × Picoprep 15.5g sachets from the chemist</label></li>
+      <li><input type="checkbox" id="cl-transport"><label for="cl-transport">Arranged transport home Wed (you can't drive for 24 hrs)</label></li>
+      <li><input type="checkbox" id="cl-overnight"><label for="cl-overnight">Confirmed a responsible adult will stay with you Wed night</label></li>
+      <li><input type="checkbox" id="cl-meds"><label for="cl-meds">Told Dr Majid about all current medications, especially any blood thinners (Warfarin etc.), diabetes meds, or heart conditions</label></li>
+      <li><input type="checkbox" id="cl-arrival"><label for="cl-arrival">Confirmed appointment time with Hunter Surgery (0488 379 080)</label></li>
+      <li><input type="checkbox" id="cl-bring-medicare"><label for="cl-bring-medicare">Medicare card + health-fund card packed for Wed</label></li>
+      <li><input type="checkbox" id="cl-bring-meds"><label for="cl-bring-meds">List of your current medications written down</label></li>
+      <li><input type="checkbox" id="cl-bring-comfy"><label for="cl-bring-comfy">Comfy loose clothes &amp; shoes ready (slip-ons are easiest after sedation)</label></li>
+      <li><input type="checkbox" id="cl-bring-phone"><label for="cl-bring-phone">Phone + charger</label></li>
+    </ul>
   </section>
 
   <!-- HYDRATION -->
   <section class="card hydration">
     <h2>Clear fluids tracker (Tuesday)</h2>
-    <p class="muted" style="margin-top:0">At least one glass of approved clear fluid every hour.</p>
+    <p class="muted" style="margin-top:0">Aim for at least 1 glass per hour, or 1 litre total after each Picoprep dose.</p>
     <div class="glass-grid" id="glassGrid"></div>
     <div class="count"><span id="glassCount">0</span> / 12 glasses</div>
     <button class="reset" id="resetGlasses">Reset</button>
@@ -303,7 +369,7 @@
 
   <!-- FULL TIMETABLE -->
   <section>
-    <h2>Full 4-day timetable</h2>
+    <h2>Full timetable</h2>
     <div class="timetable" id="timetable"></div>
   </section>
 
@@ -312,91 +378,62 @@
     <h2>Food reference</h2>
 
     <details open>
-      <summary><strong>Sunday 24 May</strong> · No nuts, seeds, or whole grains</summary>
+      <summary><strong>Sun 24 – Tue 26 (morning)</strong> · Avoid nuts, whole grains, skins, seeds</summary>
       <div class="food-grid">
-        <div class="food-box no">
-          <h3>Avoid from today</h3>
+        <div class="food-box ok">
+          <h3>Allowed</h3>
           <ul>
-            <li>All nuts (almonds, peanuts, cashews, etc.)</li>
-            <li>All seeds (chia, flax, sesame, sunflower, poppy)</li>
-            <li>Wholemeal / multigrain bread</li>
-            <li>Brown rice, oats, porridge, muesli, granola</li>
-            <li>Weet-Bix, bran cereals</li>
-            <li>Quinoa, couscous, popcorn</li>
+            <li>White or wholemeal bread, pita, Turkish bread</li>
+            <li>Lean meat, poultry, fish</li>
+            <li>Peeled fruit &amp; vegetables (NOT beetroot)</li>
+            <li>Roasted/peeled/mashed potato, hot chips</li>
+            <li>Crackers without seeds (Sao, Jatz)</li>
+            <li>Eggs, butter, margarine</li>
+            <li>Vegemite, Promite, Marmite</li>
+            <li>Cheese (any), custard, ice cream</li>
+            <li>Chocolate — <em>except bars with nuts</em></li>
           </ul>
         </div>
-        <div class="food-box ok">
-          <h3>Otherwise eat normally</h3>
+        <div class="food-box no">
+          <h3>Avoid</h3>
           <ul>
-            <li>White bread, white rice, white pasta</li>
-            <li>Meat, fish, eggs, dairy</li>
-            <li>Most fruit & veg (no nuts/seeds)</li>
-            <li>Plenty of water</li>
+            <li>Wholegrain bread, cereals, muesli, muscle/protein bars</li>
+            <li>Any nuts or food containing nuts</li>
+            <li>Strawberries</li>
+            <li>Skin on apple, pear, peach, nectarine (peeled is OK)</li>
+            <li>Citrus fruit (orange, lemon, lime, grapefruit, mandarin)</li>
+            <li>Grapes</li>
+            <li>Tomato skin or seeds, sundried tomato</li>
+            <li>Skin on capsicum, eggplant, potato (peeled is OK)</li>
+            <li>Sultanas, raisins</li>
           </ul>
         </div>
       </div>
     </details>
 
     <details>
-      <summary><strong>Monday 25 May</strong> · The White Diet</summary>
-      <div class="food-grid">
-        <div class="food-box ok">
-          <h3>Permitted</h3>
-          <ul>
-            <li>Milk, plain yoghurt, butter, margarine</li>
-            <li>Vanilla ice cream, white chocolate</li>
-            <li>Plain cream cheese, cottage, ricotta, fetta, sour cream</li>
-            <li>Egg whites, mayo, cream, white sauce</li>
-            <li>White rice, white pasta, peeled potatoes</li>
-            <li>Rice Bubbles, plain white bread/toast (not high-fibre), plain rice crackers</li>
-            <li>Chicken breast (no skin), grilled white fish</li>
-          </ul>
-        </div>
-        <div class="food-box no">
-          <h3>Excluded white foods</h3>
-          <ul>
-            <li>Pears, parsnip, cauliflower, onion</li>
-            <li>High-fibre white breads (Wonder White)</li>
-            <li>Tofu, coconut</li>
-            <li>Porridge, banana, mushrooms</li>
-            <li>Semolina, couscous, popcorn</li>
-          </ul>
-        </div>
-      </div>
-      <h3>Sample menu</h3>
-      <ul>
-        <li><strong>Breakfast:</strong> Rice Bubbles with milk, OR white toast and scrambled egg (whites only)</li>
-        <li><strong>Morning tea:</strong> Plain rice crackers with fetta</li>
-        <li><strong>Lunch:</strong> Sliced chicken breast, butter, white bread sandwich</li>
-        <li><strong>Afternoon tea:</strong> Plain vanilla yoghurt or vanilla milkshake</li>
-        <li><strong>Early dinner:</strong> Plain grilled white fish + white sauce, white rice/pasta/peeled potato, vanilla ice cream or lemonade icy-pole</li>
-      </ul>
-    </details>
-
-    <details>
-      <summary><strong>Tuesday 26 May</strong> · Clear fluids only + Picoprep</summary>
+      <summary><strong>Tue 26 May (from 1pm)</strong> · Clear fluids only + Picoprep</summary>
       <div class="food-grid">
         <div class="food-box ok">
           <h3>Approved clear fluids</h3>
           <ul>
             <li>Water (lots of it)</li>
-            <li>Clear broth, bonox, consommé, stock</li>
-            <li>Apple or pear juice — no pulp</li>
-            <li>Black tea or black coffee (no milk)</li>
-            <li>Clear sports drinks (Gatorade, Powerade, Hydralyte)</li>
-            <li>Lemonade, soft drinks, clear cordials</li>
-            <li>Plain jelly (not red/blue/purple)</li>
-            <li>Barley sugar</li>
-            <li>Moderate alcohol is allowed</li>
+            <li>Lemonade, Lucozade, barley sugar</li>
+            <li>Cordial — <em>not</em> red/green/purple/blue/orange</li>
+            <li>Black tea or black coffee — <strong>NO milk, cream, or non-dairy creamer</strong></li>
+            <li>Clear strained soups, fat-free broth (chicken noodle soup with NO chicken or noodles)</li>
+            <li>Clear apple juice — <strong>no pulp</strong></li>
+            <li>Yellow or orange jelly (not red/green/purple/blue)</li>
           </ul>
         </div>
         <div class="food-box no">
           <h3>Not allowed</h3>
           <ul>
             <li><strong>Any solid food</strong></li>
-            <li>Anything <strong>red, blue, or purple</strong> in colour</li>
-            <li>Juice <strong>with pulp</strong></li>
-            <li>Milk, milky tea/coffee, smoothies</li>
+            <li>Anything <strong>red, green, purple, blue, or orange</strong> coloured (drinks/lollies)</li>
+            <li>Milky tea/coffee, smoothies, milk</li>
+            <li>Orange juice, grape juice, tomato juice</li>
+            <li>Juice with pulp</li>
             <li>Cream, yoghurt, ice cream</li>
           </ul>
         </div>
@@ -405,243 +442,327 @@
     </details>
 
     <details>
-      <summary><strong>Wednesday 27 May</strong> · Procedure day</summary>
-      <p><strong>Nil by mouth</strong> as instructed by the hospital — nothing to eat, drink, suck or chew.</p>
-      <p><strong>One exception:</strong> the final Picoprep sachet (around 5:00 am) and water to take it with.</p>
-      <p>Arrive at the admissions area at the time the hospital gave you, allowing time to complete admission.</p>
+      <summary><strong>Wed 27 May</strong> · Procedure day</summary>
+      <p>Fast for <strong>6 hours before your appointment</strong> — no food or drinks of any kind, including water.</p>
+      <p>The one exception: your usual tablets with <em>only a sip of water</em>.</p>
+      <p>If you're diabetic, bring your morning insulin/tablets with you.</p>
     </details>
   </section>
 
-  <!-- MEDICATIONS / EXTRAS -->
+  <!-- MEDICATIONS -->
   <section class="card">
     <h2>Medication notes</h2>
     <ul>
-      <li><strong>Iron tablets:</strong> stop one week before the procedure</li>
-      <li><strong>Aspirin / Warfarin / Iscover / Plavix / Pradaxa or other blood thinners:</strong> continue as usual <em>unless</em> the gastroenterologist has told you otherwise. Tell them in advance if you're on any of these.</li>
-      <li><strong>Other regular medications:</strong> take as usual with a sip of water on Wed morning.</li>
+      <li><strong>Iron tablets:</strong> stop 5 days before the procedure (i.e. by Fri 22 May). Continue all other regular medications as normal.</li>
+      <li><strong>Warfarin / blood thinners / heart murmur / artificial heart valve / diabetes:</strong> Dr Majid needs to know in advance — special arrangements may be required.</li>
+      <li><strong>Wed morning:</strong> take your usual tablets with only a sip of water.</li>
     </ul>
   </section>
 
+  <!-- ABOUT THE PROCEDURE -->
+  <section class="card">
+    <h2>About the procedure</h2>
+    <details>
+      <summary>What happens during the colonoscopy</summary>
+      <p>You'll be given a sedative through a vein in your arm. It makes you comfortable and slightly drowsy — most people have little or no memory of the test.</p>
+      <p>The colonoscope is a thin flexible tube (about the thickness of your index finger). It's inserted through the anus and gently guided along the large bowel. The procedure takes <strong>about 30 minutes</strong>.</p>
+      <p>If any polyps are found, they're usually removed during the procedure (polypectomy).</p>
+    </details>
+
+    <details>
+      <summary>Safety &amp; risks</summary>
+      <p>Serious complications are uncommon — about <strong>1 in 1000</strong>. They include:</p>
+      <ul>
+        <li>Intolerance of the bowel prep solution</li>
+        <li>Reaction to the sedative</li>
+        <li>Major bleeding or bowel perforation (more likely if polyps are removed)</li>
+      </ul>
+      <p>Occasionally these may require treatment by blood transfusion or surgery.</p>
+    </details>
+
+    <details>
+      <summary>After the procedure</summary>
+      <p>You'll be in recovery for <strong>1–2 hours</strong> until the sedative wears off. When fully awake, you'll be told the results.</p>
+      <p class="alert important" style="margin-top:8px">
+        <strong>Tell recovery staff immediately</strong> if you have severe abdominal pain, fever, bleeding, or any new symptoms. These can also develop a few days later — <strong>call Dr Majid immediately (0488 379 080)</strong> if they do.
+      </p>
+      <p><strong>For 24 hours after:</strong> no driving, no signing legal documents, no operating dangerous machinery. A responsible adult must stay with you overnight.</p>
+    </details>
+  </section>
+
   <footer>
-    Built from your Beechnut Medical Rooms prep sheet. Always follow your doctor's specific advice over this guide.
+    Built from Dr Majid's Picoprep morning-procedure instructions. Always follow your doctor's specific advice over this guide.
   </footer>
 
 </div>
 
 <script>
 // =====================================================
-// CONFIG — your specific procedure
+// CONFIG
 // =====================================================
 const PROCEDURE_DATE = new Date(2026, 4, 27); // Wed 27 May 2026 (month is 0-indexed)
-const PROCEDURE_LABEL = "Wed 27 May";
 
 // =====================================================
-// FOOD DATABASE
-// safeUntil: latest day-index (0=Sun, 1=Mon, 2=Tue, 3=Wed) the food is OK
-//   -1 = avoid for the whole prep window (nuts/seeds/whole grains)
-//    0 = OK today (Sun) only — drops off the menu from Monday's White Diet
-//    1 = OK on White Diet day (Mon) — solid food, not clear fluid
-//    2 = OK on clear-fluid day (Tue) — clear, no pulp, not red/blue/purple
-//    3 = OK on procedure morning (Wed) — only water + final Picoprep
+// FOOD DATABASE — Dr Majid's protocol
+// safeUntil:
+//   -1 = avoid for the whole prep window
+//    1 = OK Sun/Mon (and up to Tue 1pm) — not on Tue clear-fluid phase or Wed
+//    2 = OK as a clear fluid on Tue
+//    3 = OK on Wed (only water + sip with meds, until 6 hrs before appointment)
 // =====================================================
 const FOODS = [
-  // ===== AVOID FROM 3 DAYS BEFORE (nuts/seeds/whole grains) =====
-  { name: "Almonds", kw: ["almond"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Peanuts / peanut butter", kw: ["peanut", "pb"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Walnuts", kw: ["walnut"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Cashews", kw: ["cashew"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Pistachios", kw: ["pistachio"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Pecans", kw: ["pecan"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Macadamias", kw: ["macadamia"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Hazelnuts / Nutella", kw: ["hazelnut", "nutella"], safeUntil: -1, reason: "Nut — avoid from 3 days before procedure" },
-  { name: "Nuts (any)", kw: ["nut", "nuts", "trail mix", "mixed nuts"], safeUntil: -1, reason: "Nuts of any kind — avoid from 3 days before procedure" },
-  { name: "Chia seeds", kw: ["chia"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Flax / linseeds", kw: ["flax", "linseed"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Sunflower seeds", kw: ["sunflower seed"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Sesame seeds", kw: ["sesame", "tahini"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Pumpkin seeds", kw: ["pumpkin seed", "pepita"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Poppy seeds", kw: ["poppy"], safeUntil: -1, reason: "Seed — avoid from 3 days before procedure" },
-  { name: "Seeds (any)", kw: ["seed", "seeds"], safeUntil: -1, reason: "Seeds of any kind — avoid from 3 days before procedure" },
-  { name: "Wholemeal / wholegrain bread", kw: ["wholemeal", "wholegrain", "whole grain", "whole wheat", "wholewheat"], safeUntil: -1, reason: "Whole grains — avoid from 3 days before procedure" },
-  { name: "Multigrain bread", kw: ["multigrain", "multi-grain", "grain bread", "seeded bread"], safeUntil: -1, reason: "Multigrain — avoid from 3 days before procedure" },
-  { name: "Rye bread", kw: ["rye"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure" },
-  { name: "Brown rice", kw: ["brown rice"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure" },
-  { name: "Wholemeal pasta", kw: ["wholemeal pasta", "wholewheat pasta", "brown pasta"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure" },
-  { name: "Oats / porridge / oatmeal", kw: ["oat", "oats", "porridge", "oatmeal"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure (also excluded from White Diet)" },
-  { name: "Muesli", kw: ["muesli"], safeUntil: -1, reason: "Whole grains, nuts and seeds — avoid from 3 days before procedure" },
-  { name: "Granola", kw: ["granola"], safeUntil: -1, reason: "Whole grains, nuts and seeds — avoid from 3 days before procedure" },
-  { name: "Weet-Bix / bran cereal", kw: ["weetbix", "weet-bix", "weet bix", "bran", "all-bran", "all bran", "fibre cereal", "fiber cereal"], safeUntil: -1, reason: "High-fibre cereal — avoid from 3 days before procedure" },
-  { name: "Quinoa", kw: ["quinoa"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure" },
-  { name: "Couscous", kw: ["couscous"], safeUntil: -1, reason: "Excluded from White Diet" },
-  { name: "Semolina", kw: ["semolina"], safeUntil: -1, reason: "Excluded from White Diet" },
-  { name: "Popcorn", kw: ["popcorn"], safeUntil: -1, reason: "Excluded from White Diet — hard to digest" },
-  { name: "Barley (whole)", kw: ["barley", "pearl barley"], safeUntil: -1, reason: "Whole grain — avoid from 3 days before procedure" },
+  // ===== AVOID FROM 3 DAYS BEFORE =====
+  // Nuts
+  { name: "Almonds", kw: ["almond"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Peanuts / peanut butter", kw: ["peanut", "pb"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Walnuts", kw: ["walnut"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Cashews", kw: ["cashew"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Pistachios", kw: ["pistachio"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Pecans", kw: ["pecan"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Macadamias", kw: ["macadamia"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Hazelnuts / Nutella", kw: ["hazelnut", "nutella"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Brazil nuts", kw: ["brazil nut"], safeUntil: -1, reason: "Nut — avoid for the 3 days before procedure" },
+  { name: "Nuts (any)", kw: ["nut", "nuts", "trail mix", "mixed nuts"], safeUntil: -1, reason: "Any nuts — avoid for the 3 days before procedure" },
+  { name: "Muesli / muscle / protein bars", kw: ["muesli bar", "muscle bar", "protein bar", "snack bar"], safeUntil: -1, reason: "Specifically listed as avoid (nuts/grains/seeds)" },
 
-  // ===== WHITE DIET EXCLUDED (max safe = day 0, Sunday) =====
-  { name: "Pears", kw: ["pear"], safeUntil: 0, reason: "Excluded from the White Diet — OK today (Sun) only. Note: pear juice without pulp is OK on Tue" },
-  { name: "Parsnip", kw: ["parsnip"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Cauliflower", kw: ["cauliflower", "cauli"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Onion", kw: ["onion"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Tofu", kw: ["tofu", "bean curd"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Coconut", kw: ["coconut"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Banana", kw: ["banana"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "Mushrooms", kw: ["mushroom"], safeUntil: 0, reason: "Excluded from the White Diet" },
-  { name: "High-fibre white bread (e.g. Wonder White)", kw: ["wonder white", "high fibre white", "high-fibre white", "hi fibre", "hi-fibre"], safeUntil: 0, reason: "High-fibre even though white — excluded from the White Diet" },
+  // Seeds (general)
+  { name: "Chia seeds", kw: ["chia"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Flax / linseeds", kw: ["flax", "linseed"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Sunflower seeds", kw: ["sunflower seed"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Sesame / tahini", kw: ["sesame", "tahini"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Pumpkin seeds / pepitas", kw: ["pumpkin seed", "pepita"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Poppy seeds", kw: ["poppy"], safeUntil: -1, reason: "Seed — avoid for the 3 days before procedure" },
+  { name: "Seeds (any)", kw: ["seed", "seeds"], safeUntil: -1, reason: "Seeds — avoid for the 3 days before procedure" },
+  { name: "Seeded crackers / seeded bread", kw: ["seeded cracker", "seeded bread", "linseed bread"], safeUntil: -1, reason: "Contains seeds — avoid. Plain Sao/Jatz crackers (no seeds) are fine." },
 
-  // ===== WHITE DIET PERMITTED (max safe = day 1, Monday) =====
-  { name: "White bread / white toast", kw: ["white bread", "white toast", "toast", "bread"], safeUntil: 1, reason: "Permitted on the White Diet. Make sure it's regular white, not high-fibre." },
-  { name: "White rice", kw: ["white rice", "rice", "basmati", "jasmine"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "White pasta", kw: ["pasta", "spaghetti", "penne", "fusilli", "macaroni", "fettuccine"], safeUntil: 1, reason: "Permitted on the White Diet (plain white pasta only)" },
-  { name: "Peeled potato", kw: ["potato", "potatoes", "mashed potato", "boiled potato"], safeUntil: 1, reason: "Permitted on the White Diet (peeled, no skin)" },
-  { name: "Rice Bubbles", kw: ["rice bubble", "rice bubbles", "rice krispies"], safeUntil: 1, reason: "Permitted on the White Diet — low residue" },
-  { name: "Plain rice crackers", kw: ["rice cracker", "rice crackers"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Chicken breast (no skin)", kw: ["chicken", "chicken breast", "grilled chicken"], safeUntil: 1, reason: "Permitted on the White Diet — breast meat, no skin" },
-  { name: "White fish (grilled)", kw: ["fish", "white fish", "snapper", "barramundi", "flathead", "cod", "haddock", "whiting"], safeUntil: 1, reason: "Permitted on the White Diet — plain grilled white fish fillet" },
-  { name: "Milk", kw: ["milk"], safeUntil: 1, reason: "Permitted on the White Diet. Not allowed on Tuesday (not a clear fluid)." },
-  { name: "Plain yoghurt", kw: ["yoghurt", "yogurt", "yoghurt plain"], safeUntil: 1, reason: "Plain yoghurt only — permitted on the White Diet" },
-  { name: "Butter / margarine", kw: ["butter", "margarine"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Vanilla ice cream", kw: ["vanilla ice cream", "vanilla icecream", "ice cream", "icecream"], safeUntil: 1, reason: "Vanilla ice cream is permitted on the White Diet. Chocolate/strawberry/other flavours are not." },
-  { name: "White chocolate", kw: ["white chocolate", "white chocolat"], safeUntil: 1, reason: "Permitted on the White Diet. White chocolate Freddo also OK." },
-  { name: "Cream cheese (plain)", kw: ["cream cheese", "philadelphia"], safeUntil: 1, reason: "Plain cream cheese — permitted on the White Diet" },
-  { name: "Cottage cheese", kw: ["cottage cheese"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Ricotta", kw: ["ricotta"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Fetta / feta", kw: ["feta", "fetta"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Sour cream", kw: ["sour cream"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Egg whites", kw: ["egg white", "egg whites", "scrambled egg whites"], safeUntil: 1, reason: "Egg whites are permitted on the White Diet (whole eggs/yolks not on the list)" },
-  { name: "Mayonnaise", kw: ["mayo", "mayonnaise"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Cream", kw: ["cream", "thickened cream", "pouring cream"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "White sauce", kw: ["white sauce", "bechamel", "béchamel"], safeUntil: 1, reason: "Permitted on the White Diet" },
-  { name: "Vanilla milkshake", kw: ["vanilla milkshake", "milkshake"], safeUntil: 1, reason: "Vanilla milkshake is in the White Diet sample menu" },
+  // Wholegrains (note: wholemeal IS allowed)
+  { name: "Wholegrain bread", kw: ["wholegrain", "whole grain", "grainy bread", "multigrain", "multi-grain", "seeded bread"], safeUntil: -1, reason: "Wholegrain/multigrain — avoid. (Wholemeal is OK.)" },
+  { name: "Brown rice", kw: ["brown rice"], safeUntil: -1, reason: "Whole grain — avoid for the 3 days before procedure" },
+  { name: "Wholegrain cereals", kw: ["wholegrain cereal", "cereal wholegrain"], safeUntil: -1, reason: "Wholegrain — avoid" },
+  { name: "Muesli / granola", kw: ["muesli", "granola"], safeUntil: -1, reason: "Contains grains, nuts and seeds — avoid" },
+  { name: "Oats / porridge", kw: ["oat", "oats", "porridge", "oatmeal"], safeUntil: -1, reason: "Whole grain — avoid for the 3 days before procedure" },
+  { name: "Weet-Bix / bran cereal", kw: ["weetbix", "weet-bix", "weet bix", "bran", "all-bran", "all bran", "fibre cereal"], safeUntil: -1, reason: "Wholegrain / high fibre — avoid" },
+  { name: "Quinoa", kw: ["quinoa"], safeUntil: -1, reason: "Wholegrain — avoid for the 3 days before procedure" },
+  { name: "Popcorn", kw: ["popcorn"], safeUntil: -1, reason: "Whole-grain kernel with hard hulls — avoid" },
+  { name: "Rye / pumpernickel bread", kw: ["rye bread", "pumpernickel"], safeUntil: -1, reason: "Wholegrain — avoid" },
+  { name: "Sourdough (grainy)", kw: ["sourdough"], safeUntil: 1, reason: "Plain white sourdough is fine; if it's grainy or seeded, avoid it" },
 
-  // ===== GENERAL FOODS — OK today only (safeUntil 0) =====
-  { name: "Eggs (whole)", kw: ["egg", "eggs", "scrambled egg", "boiled egg", "fried egg", "poached egg", "omelette", "omelet"], safeUntil: 0, reason: "Whole eggs/yolks aren't on the White Diet list (only egg whites are). OK today; on Monday stick to egg whites." },
-  { name: "Bacon", kw: ["bacon"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Sausages", kw: ["sausage", "snag"], safeUntil: 0, reason: "Not on the White Diet (contains seeds/herbs) — OK today only" },
-  { name: "Beef / steak / mince", kw: ["beef", "steak", "mince", "burger pattie", "burger patty"], safeUntil: 0, reason: "Red meat isn't on the White Diet — OK today only" },
-  { name: "Pork / ham", kw: ["pork", "ham"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Lamb", kw: ["lamb"], safeUntil: 0, reason: "Red meat isn't on the White Diet — OK today only" },
-  { name: "Salmon / tuna / oily fish", kw: ["salmon", "tuna", "mackerel", "sardine"], safeUntil: 0, reason: "Only plain grilled white fish is on the White Diet — OK today only" },
-  { name: "Most fruit (apple, orange, berries, grapes, melon)", kw: ["apple", "orange", "berry", "berries", "strawberry", "blueberry", "raspberry", "blackberry", "grape", "melon", "watermelon", "rockmelon", "cantaloupe", "kiwi", "mango", "pineapple", "peach", "plum", "apricot", "nectarine", "cherry", "fig"], safeUntil: 0, reason: "Most fruit isn't on the White Diet — OK today only. Avoid berries with seeds, and anything red/blue/purple on Tue." },
-  { name: "Vegetables (most)", kw: ["broccoli", "spinach", "lettuce", "salad", "tomato", "cucumber", "carrot", "capsicum", "pepper", "zucchini", "courgette", "pumpkin", "eggplant", "aubergine", "celery", "asparagus", "peas", "corn", "sweetcorn", "beans", "green beans", "bean", "sweet potato", "kumara", "beetroot"], safeUntil: 0, reason: "Vegetables aren't on the White Diet — OK today only" },
-  { name: "Avocado", kw: ["avocado", "avo"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Sushi", kw: ["sushi", "nori", "seaweed"], safeUntil: 0, reason: "Contains seeds (sesame, seaweed) and raw fish — OK today, then stop" },
-  { name: "Pizza", kw: ["pizza"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Burger", kw: ["burger", "hamburger", "cheeseburger"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Cheese (yellow/hard)", kw: ["cheddar", "tasty cheese", "parmesan", "swiss", "gouda", "mozzarella", "cheese"], safeUntil: 0, reason: "Only white soft cheeses (cottage, ricotta, fetta, cream cheese) are on the White Diet" },
-  { name: "Milk chocolate / dark chocolate", kw: ["milk chocolate", "dark chocolate", "chocolate"], safeUntil: 0, reason: "Only white chocolate is on the White Diet" },
-  { name: "Vegemite", kw: ["vegemite", "marmite"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Curry / spicy food", kw: ["curry", "chilli", "chili", "spicy"], safeUntil: 0, reason: "Not on the White Diet — OK today only" },
-  { name: "Salad", kw: ["salad"], safeUntil: 0, reason: "Raw veg isn't on the White Diet — OK today only" },
-  { name: "Soup (chunky)", kw: ["chunky soup", "minestrone", "lentil soup", "pea soup"], safeUntil: 0, reason: "Chunky soups aren't on the White Diet — OK today only. Clear broths are OK Tuesday." },
-  { name: "Lentils / chickpeas / beans", kw: ["lentil", "chickpea", "garbanzo", "kidney bean", "black bean", "hummus"], safeUntil: 0, reason: "Legumes aren't on the White Diet — OK today only" },
+  // Fruits banned
+  { name: "Strawberries", kw: ["strawberry", "strawberries"], safeUntil: -1, reason: "Specifically listed as avoid — small seeds" },
+  { name: "Raspberries / blackberries / blueberries", kw: ["raspberry", "blackberry", "blueberry", "berry", "berries"], safeUntil: -1, reason: "Berries have many small seeds — best avoided. Strawberries are specifically excluded." },
+  { name: "Grapes", kw: ["grape"], safeUntil: -1, reason: "Specifically listed as avoid (skins + seeds)" },
+  { name: "Sultanas / raisins / currants", kw: ["sultana", "raisin", "currant"], safeUntil: -1, reason: "Specifically listed as avoid" },
+  { name: "Citrus — orange / mandarin", kw: ["orange fruit", "orange (fruit)", "mandarin", "tangerine"], safeUntil: -1, reason: "Citrus fruit — avoid (pulp, membranes)" },
+  { name: "Citrus — lemon (fruit/wedge)", kw: ["lemon wedge", "lemon slice", "lemon (fruit)"], safeUntil: -1, reason: "Citrus fruit flesh — avoid. Lemon flavour in drinks (lemonade, lemon cordial) is fine." },
+  { name: "Citrus — lime (fruit/wedge)", kw: ["lime wedge", "lime slice", "lime (fruit)"], safeUntil: -1, reason: "Citrus fruit — avoid" },
+  { name: "Citrus — grapefruit", kw: ["grapefruit"], safeUntil: -1, reason: "Citrus fruit — avoid" },
+  { name: "Citrus (any)", kw: ["citrus"], safeUntil: -1, reason: "Citrus fruit — avoid for the 3 days before procedure" },
 
-  // ===== CLEAR FLUIDS — OK through Tuesday (safeUntil 2) =====
-  { name: "Water", kw: ["water"], safeUntil: 3, reason: "Always allowed — even on procedure morning (for taking Picoprep). Drink lots." },
-  { name: "Black tea", kw: ["black tea", "tea no milk", "plain tea"], safeUntil: 2, reason: "Approved clear fluid (no milk on Tue)" },
-  { name: "Black coffee", kw: ["black coffee", "espresso", "long black", "americano", "coffee no milk"], safeUntil: 2, reason: "Approved clear fluid (no milk on Tue)" },
-  { name: "Tea or coffee (with milk)", kw: ["tea", "coffee", "latte", "flat white", "cappuccino", "milky tea", "milky coffee", "mocha"], safeUntil: 1, reason: "With milk it's only OK on Monday. On Tuesday it must be black (no milk)." },
-  { name: "Apple juice (no pulp)", kw: ["apple juice", "clear apple juice"], safeUntil: 2, reason: "Approved clear fluid — make sure it's no-pulp" },
-  { name: "Pear juice (no pulp)", kw: ["pear juice", "clear pear juice"], safeUntil: 2, reason: "Approved clear fluid — no pulp" },
-  { name: "Orange juice (pulp)", kw: ["orange juice", "oj"], safeUntil: 1, reason: "Has pulp — not allowed on Tuesday. Pulp-free juice (apple/pear) only on Tue." },
-  { name: "Grape juice / purple juice", kw: ["grape juice", "purple juice", "blackcurrant"], safeUntil: 1, reason: "Purple colour — not allowed on Tuesday" },
-  { name: "Cranberry juice", kw: ["cranberry"], safeUntil: 1, reason: "Red colour — not allowed on Tuesday" },
-  { name: "Tomato juice / V8", kw: ["tomato juice", "v8"], safeUntil: 1, reason: "Red colour and pulp — not a clear fluid" },
-  { name: "Clear broth / bonox / consommé / stock", kw: ["broth", "bonox", "consomme", "consommé", "stock", "bouillon", "clear soup"], safeUntil: 2, reason: "Approved clear savoury fluid for Tuesday" },
-  { name: "Lemonade / clear soft drink", kw: ["lemonade", "sprite", "7up", "ginger ale", "ginger beer", "soda water", "soft drink", "softdrink"], safeUntil: 2, reason: "Clear, non-coloured soft drinks are approved" },
-  { name: "Coke / Pepsi / cola", kw: ["coke", "coca cola", "pepsi", "cola"], safeUntil: 2, reason: "OK on Tuesday — brown, not red/blue/purple" },
-  { name: "Gatorade / Powerade (clear or yellow/orange)", kw: ["gatorade", "powerade", "sports drink", "hydralyte", "electrolyte"], safeUntil: 2, reason: "Approved clear sports drink — but skip red, blue, or purple varieties on Tue" },
-  { name: "Red / blue / purple sports drink", kw: ["red gatorade", "blue gatorade", "blue powerade", "red powerade", "purple powerade"], safeUntil: 1, reason: "Red/blue/purple colours aren't allowed on Tuesday — pick yellow, orange, or clear varieties" },
-  { name: "Clear cordial (lemon / lime)", kw: ["cordial", "lemon cordial", "lime cordial"], safeUntil: 2, reason: "Approved if it's not red/blue/purple coloured" },
-  { name: "Plain jelly (not red/blue/purple)", kw: ["jelly", "jello", "lemon jelly", "yellow jelly"], safeUntil: 2, reason: "Plain jelly is OK on Tuesday — avoid red, blue, purple flavours" },
-  { name: "Lemonade icy-pole", kw: ["icy pole", "icypole", "ice block", "iceblock", "icy-pole", "popsicle"], safeUntil: 2, reason: "Lemonade icy-pole is mentioned in the White Diet sample menu, and is a clear-fluid-friendly choice on Tue if it's not red/blue/purple" },
-  { name: "Barley sugar", kw: ["barley sugar", "boiled lolly", "hard lolly"], safeUntil: 2, reason: "Approved — clear hard lolly" },
-  { name: "Honey / sugar (in tea/coffee)", kw: ["honey", "sugar"], safeUntil: 2, reason: "OK to sweeten approved fluids" },
+  // Skins
+  { name: "Apple (with skin)", kw: ["apple skin", "apple with skin", "unpeeled apple"], safeUntil: -1, reason: "Skin not allowed. Peeled apple is OK." },
+  { name: "Apple (peeled)", kw: ["peeled apple", "apple peeled", "apple"], safeUntil: 1, reason: "Peeled apple is allowed in the 3 days before. Avoid the skin." },
+  { name: "Pear (with skin)", kw: ["pear skin", "unpeeled pear"], safeUntil: -1, reason: "Skin not allowed. Peeled pear is OK." },
+  { name: "Pear (peeled)", kw: ["peeled pear", "pear"], safeUntil: 1, reason: "Peeled pear is allowed. Avoid the skin." },
+  { name: "Peach (with skin)", kw: ["peach skin", "unpeeled peach"], safeUntil: -1, reason: "Skin not allowed. Peeled peach is OK." },
+  { name: "Peach (peeled)", kw: ["peeled peach", "peach"], safeUntil: 1, reason: "Peeled peach is allowed. Avoid the skin." },
+  { name: "Nectarine (with skin)", kw: ["nectarine skin", "unpeeled nectarine"], safeUntil: -1, reason: "Skin not allowed. Peeled is OK." },
+  { name: "Nectarine (peeled)", kw: ["peeled nectarine", "nectarine"], safeUntil: 1, reason: "Peeled nectarine is allowed. Avoid the skin." },
 
-  // ===== ALCOHOL =====
-  { name: "Beer / cider", kw: ["beer", "cider", "lager", "ale"], safeUntil: 1, reason: "Moderate alcohol is allowed on White Diet day. Tuesday is clear-fluids only — beer/cider not on the approved list." },
-  { name: "Wine (white)", kw: ["white wine", "wine"], safeUntil: 1, reason: "Moderate alcohol OK on White Diet day. Not on Tuesday." },
-  { name: "Wine (red)", kw: ["red wine", "shiraz", "cab sav", "merlot", "pinot noir"], safeUntil: 1, reason: "Red colour — not on Tue. Moderate amount OK Mon." },
-  { name: "Spirits (clear — vodka, gin)", kw: ["vodka", "gin", "tequila"], safeUntil: 2, reason: "Clear spirits in moderation are clear fluids, but better to skip alcohol close to the procedure" },
-  { name: "Whisky / rum / dark spirits", kw: ["whisky", "whiskey", "rum", "bourbon", "scotch"], safeUntil: 1, reason: "Not on the approved clear fluids list" },
+  // Tomato
+  { name: "Tomato (skin/seeds)", kw: ["tomato skin", "cherry tomato", "tomato (whole)"], safeUntil: -1, reason: "Tomato skin and seeds — avoid. Peeled/seeded tomato OK." },
+  { name: "Tomato (peeled, deseeded)", kw: ["peeled tomato", "tomato passata", "tomato sauce", "tomato puree"], safeUntil: 1, reason: "Peeled, seeded tomato (e.g. passata, sauce) is fine. Whole tomato with skin/seeds isn't." },
+  { name: "Sundried tomato", kw: ["sundried", "sun dried", "sun-dried tomato"], safeUntil: -1, reason: "Specifically listed as avoid" },
+  { name: "Tomato", kw: ["tomato"], safeUntil: -1, reason: "Whole tomato has skin and seeds — avoid. Peeled/deseeded forms (passata) are OK." },
 
-  // ===== NEVER on TUESDAY (smoothies, cream-based) =====
-  { name: "Smoothie", kw: ["smoothie"], safeUntil: 1, reason: "Not clear — not allowed on Tuesday" },
-  { name: "Milkshake (non-vanilla)", kw: ["chocolate milkshake", "strawberry milkshake"], safeUntil: 0, reason: "Only vanilla milkshake is on the White Diet" },
-  { name: "Milo / hot chocolate", kw: ["milo", "hot chocolate", "ovaltine"], safeUntil: 1, reason: "Milky — not clear. OK with milk on Mon (white-ish chocolate), avoid Tue." },
+  // Veg skins
+  { name: "Capsicum / pepper (with skin)", kw: ["capsicum", "pepper", "bell pepper"], safeUntil: -1, reason: "Skin not allowed. Peeled is OK." },
+  { name: "Eggplant / aubergine (with skin)", kw: ["eggplant", "aubergine"], safeUntil: -1, reason: "Skin not allowed. Peeled is OK." },
+  { name: "Potato (with skin)", kw: ["potato skin", "jacket potato", "baked potato skin"], safeUntil: -1, reason: "Skin not allowed. Peeled / mashed / roasted peeled / hot chips are OK." },
+  { name: "Potato (peeled / mashed / chips)", kw: ["potato", "mashed potato", "peeled potato", "hot chips", "chips", "fries", "french fries", "wedges"], safeUntil: 1, reason: "Peeled, mashed, roasted potato and hot chips are all OK in the 3 days before." },
+
+  // Beetroot
+  { name: "Beetroot", kw: ["beetroot", "beet"], safeUntil: -1, reason: "Specifically called out — not allowed even peeled" },
+
+  // ===== ALLOWED FOODS (Sun–Mon, until Tue 1pm) — safeUntil: 1 =====
+  // Breads
+  { name: "White bread / white toast", kw: ["white bread", "white toast", "toast", "bread"], safeUntil: 1, reason: "White bread is allowed in the 3 days before. Not allowed on Tue (clear fluids only)." },
+  { name: "Wholemeal bread", kw: ["wholemeal", "whole-meal", "whole meal bread"], safeUntil: 1, reason: "Wholemeal IS allowed in Dr Majid's list (different from wholegrain — which isn't)." },
+  { name: "Pita bread", kw: ["pita", "pitta"], safeUntil: 1, reason: "Pita bread is on the allowed list" },
+  { name: "Turkish bread", kw: ["turkish bread", "turkish"], safeUntil: 1, reason: "Turkish bread is on the allowed list" },
+
+  // Meat / poultry / fish
+  { name: "Chicken", kw: ["chicken", "poultry"], safeUntil: 1, reason: "Lean poultry is allowed" },
+  { name: "Turkey", kw: ["turkey"], safeUntil: 1, reason: "Lean poultry is allowed" },
+  { name: "Beef / steak / mince", kw: ["beef", "steak", "mince", "burger pattie", "burger patty"], safeUntil: 1, reason: "Lean meat is allowed in the 3 days before" },
+  { name: "Pork / ham", kw: ["pork", "ham"], safeUntil: 1, reason: "Lean meat is allowed" },
+  { name: "Lamb", kw: ["lamb"], safeUntil: 1, reason: "Lean meat is allowed" },
+  { name: "Bacon", kw: ["bacon"], safeUntil: 1, reason: "Allowed (lean meat). Heavy/fatty meals aren't ideal before prep though." },
+  { name: "Sausages", kw: ["sausage", "snag"], safeUntil: 1, reason: "Plain sausages OK in the 3 days before — avoid seeded/herby ones if you can" },
+  { name: "Fish (any)", kw: ["fish", "salmon", "tuna", "snapper", "barramundi", "flathead", "whiting", "cod", "haddock"], safeUntil: 1, reason: "Fish is allowed in the 3 days before" },
+  { name: "Sushi (with seaweed)", kw: ["sushi", "nori", "seaweed"], safeUntil: -1, reason: "Contains seaweed (a 'seed/grain'-ish issue) and often sesame — best avoided" },
+
+  // Eggs & dairy
+  { name: "Eggs", kw: ["egg", "eggs", "scrambled egg", "boiled egg", "fried egg", "poached egg", "omelette", "omelet"], safeUntil: 1, reason: "Eggs are allowed (any way) in the 3 days before" },
+  { name: "Cheese (any)", kw: ["cheese", "cheddar", "tasty cheese", "parmesan", "swiss", "gouda", "mozzarella", "fetta", "feta", "ricotta", "cottage cheese", "cream cheese", "philadelphia", "brie", "camembert"], safeUntil: 1, reason: "Cheese is allowed in the 3 days before" },
+  { name: "Butter / margarine", kw: ["butter", "margarine"], safeUntil: 1, reason: "Allowed" },
+  { name: "Milk", kw: ["milk"], safeUntil: 1, reason: "OK Sun–Mon. NOT allowed Tue (Tue is clear fluids, no milk in tea/coffee)." },
+  { name: "Yoghurt (plain)", kw: ["yoghurt", "yogurt"], safeUntil: 1, reason: "Plain yoghurt is OK in the 3 days before. Not allowed Tue." },
+  { name: "Custard", kw: ["custard"], safeUntil: 1, reason: "On the allowed list" },
+  { name: "Ice cream (any)", kw: ["ice cream", "icecream"], safeUntil: 1, reason: "Ice cream is on the allowed list — any flavour. Not allowed on Tue." },
+  { name: "Cream / sour cream", kw: ["cream", "sour cream", "thickened cream"], safeUntil: 1, reason: "OK Sun–Mon. Not Tue (no cream in tea/coffee on clear-fluid day)." },
+
+  // Spreads
+  { name: "Vegemite / Promite / Marmite", kw: ["vegemite", "promite", "marmite"], safeUntil: 1, reason: "All three are on Dr Majid's allowed list" },
+  { name: "Mayonnaise", kw: ["mayo", "mayonnaise"], safeUntil: 1, reason: "Allowed" },
+  { name: "Jam / honey (no seeds)", kw: ["jam", "honey", "marmalade"], safeUntil: 1, reason: "Plain jam/honey is OK — avoid jams with whole berries/seeds (strawberry, raspberry)" },
+
+  // Crackers
+  { name: "Sao / Jatz / plain crackers (no seeds)", kw: ["sao", "jatz", "salada", "water cracker", "plain cracker"], safeUntil: 1, reason: "Plain seedless crackers are on the allowed list" },
+  { name: "Rice crackers", kw: ["rice cracker"], safeUntil: 1, reason: "Plain rice crackers (no seeds) are OK" },
+
+  // Rice / pasta
+  { name: "White rice", kw: ["white rice", "rice", "basmati", "jasmine"], safeUntil: 1, reason: "White rice is OK" },
+  { name: "White pasta", kw: ["pasta", "spaghetti", "penne", "fusilli", "macaroni", "fettuccine"], safeUntil: 1, reason: "Plain pasta is OK (use sauces without skins/seeds)" },
+  { name: "Couscous", kw: ["couscous"], safeUntil: 1, reason: "Not specifically banned — fine in moderation in the 3 days before" },
+
+  // Veg
+  { name: "Carrots (peeled, cooked)", kw: ["carrot"], safeUntil: 1, reason: "Peeled, cooked veg is allowed" },
+  { name: "Pumpkin (peeled)", kw: ["pumpkin"], safeUntil: 1, reason: "Peeled pumpkin is OK" },
+  { name: "Zucchini (peeled)", kw: ["zucchini", "courgette"], safeUntil: 1, reason: "Peeled is OK" },
+  { name: "Onion", kw: ["onion"], safeUntil: 1, reason: "Not specifically banned — OK in the 3 days before. (Strong opinions vary; avoid raw onion if it doesn't sit well.)" },
+  { name: "Mushrooms", kw: ["mushroom"], safeUntil: 1, reason: "Not specifically banned by Dr Majid's list — OK" },
+  { name: "Cauliflower", kw: ["cauliflower", "cauli"], safeUntil: 1, reason: "Not specifically banned — OK in the 3 days before" },
+  { name: "Broccoli", kw: ["broccoli"], safeUntil: 0, reason: "Fibrous veg — not ideal but not specifically banned. Best to limit." },
+  { name: "Salad / leafy greens (raw)", kw: ["salad", "lettuce", "spinach", "rocket", "arugula"], safeUntil: 0, reason: "Raw leafy greens are high-residue — limit/avoid" },
+  { name: "Avocado", kw: ["avocado", "avo"], safeUntil: 1, reason: "Not on either list — OK in moderation" },
+  { name: "Sweet potato (peeled)", kw: ["sweet potato", "kumara"], safeUntil: 1, reason: "Peeled is OK" },
+  { name: "Peas / beans / corn", kw: ["peas", "green beans", "corn", "sweetcorn"], safeUntil: 0, reason: "High-residue (skins/hulls) — best to limit" },
+  { name: "Lentils / chickpeas / legumes", kw: ["lentil", "chickpea", "garbanzo", "kidney bean", "black bean", "hummus"], safeUntil: 0, reason: "Legumes are high-residue — best to limit in the 3 days before" },
+  { name: "Tofu", kw: ["tofu", "bean curd"], safeUntil: 1, reason: "Not specifically banned — OK" },
+
+  // Fruit
+  { name: "Banana", kw: ["banana"], safeUntil: 1, reason: "Banana is fine — no skin/seeds issue" },
+  { name: "Melon / watermelon / rockmelon", kw: ["melon", "watermelon", "rockmelon", "cantaloupe", "honeydew"], safeUntil: 1, reason: "Flesh only (no seeds) — OK" },
+  { name: "Mango / kiwi / pineapple", kw: ["mango", "kiwi", "pineapple"], safeUntil: 1, reason: "OK once peeled and no large seeds" },
+  { name: "Stone fruit (with stone removed)", kw: ["plum", "apricot", "cherry"], safeUntil: 0, reason: "Skins are an issue — peeled flesh is OK in moderation" },
+  { name: "Coconut", kw: ["coconut"], safeUntil: 1, reason: "Not specifically banned" },
+  { name: "Dried fruit", kw: ["dried fruit", "dried apricot", "dried apple", "prune"], safeUntil: -1, reason: "Sultanas and raisins are specifically banned — best avoid all dried fruit" },
+
+  // Sweets
+  { name: "Chocolate (no nuts)", kw: ["chocolate", "milk chocolate", "dark chocolate", "white chocolate"], safeUntil: 1, reason: "Plain chocolate is allowed — just no bars with nuts" },
+  { name: "Chocolate with nuts", kw: ["snickers", "picnic", "boost", "nut chocolate", "almond chocolate"], safeUntil: -1, reason: "Chocolate with nuts — specifically excluded" },
+  { name: "Lollies (no nuts/seeds, no banned colours)", kw: ["lolly", "lollies", "sweet", "candy", "boiled lolly", "barley sugar"], safeUntil: 1, reason: "Plain lollies are OK — barley sugar is allowed even on clear-fluid Tue" },
+
+  // ===== CLEAR FLUIDS (Tue) =====
+  { name: "Water", kw: ["water"], safeUntil: 3, reason: "Always OK — until the 6-hour fast window before your Wed appointment" },
+  { name: "Black tea", kw: ["black tea", "tea no milk", "plain tea"], safeUntil: 2, reason: "Black tea is OK Tue — NO milk, NO cream, NO non-dairy creamer" },
+  { name: "Black coffee", kw: ["black coffee", "espresso", "long black", "americano", "coffee no milk"], safeUntil: 2, reason: "Black coffee is OK Tue — NO milk, NO cream, NO non-dairy creamer" },
+  { name: "Tea / coffee with milk", kw: ["tea", "coffee", "latte", "flat white", "cappuccino", "milky tea", "milky coffee", "mocha"], safeUntil: 1, reason: "Milk isn't allowed on Tue. Have it black on Tue, or with milk only on Sun/Mon." },
+  { name: "Clear apple juice (no pulp)", kw: ["apple juice", "clear apple juice"], safeUntil: 2, reason: "Approved clear fluid — make sure it's no-pulp" },
+  { name: "Orange juice", kw: ["orange juice", "oj"], safeUntil: 1, reason: "Orange colour AND pulp — not allowed on Tue. Citrus fruit also banned for the 3 days." },
+  { name: "Grape juice", kw: ["grape juice", "purple juice"], safeUntil: 1, reason: "Purple colour — not allowed on Tue" },
+  { name: "Cranberry juice", kw: ["cranberry"], safeUntil: 1, reason: "Red colour — not allowed on Tue" },
+  { name: "Pear juice (no pulp)", kw: ["pear juice"], safeUntil: 2, reason: "Approved clear fluid — no pulp" },
+  { name: "Tomato juice / V8", kw: ["tomato juice", "v8"], safeUntil: 1, reason: "Red, pulpy — not a clear fluid" },
+  { name: "Lemonade", kw: ["lemonade", "sprite", "7up"], safeUntil: 2, reason: "Clear/yellow soft drink — approved" },
+  { name: "Lucozade", kw: ["lucozade"], safeUntil: 2, reason: "Specifically mentioned in Dr Majid's clear-fluid list" },
+  { name: "Soda water / mineral water", kw: ["soda water", "mineral water"], safeUntil: 2, reason: "Clear fluid — OK" },
+  { name: "Ginger ale / ginger beer (clear)", kw: ["ginger ale", "ginger beer"], safeUntil: 2, reason: "Clear/yellowish — OK" },
+  { name: "Cola (Coke / Pepsi)", kw: ["coke", "coca cola", "pepsi", "cola"], safeUntil: 2, reason: "Brown — not in the banned colours list. OK on Tue." },
+  { name: "Fanta / orange soft drink", kw: ["fanta", "orange soft drink", "orange softdrink"], safeUntil: 1, reason: "Orange colour — NOT allowed on Tue (red/green/purple/blue/orange all banned)" },
+  { name: "Lemon cordial", kw: ["lemon cordial"], safeUntil: 2, reason: "Yellow — OK on Tue" },
+  { name: "Lime cordial", kw: ["lime cordial"], safeUntil: 1, reason: "Lime cordial is typically GREEN — green colour isn't allowed on Tue" },
+  { name: "Raspberry / red cordial", kw: ["red cordial", "raspberry cordial"], safeUntil: 1, reason: "Red — not allowed on Tue" },
+  { name: "Gatorade / Powerade / Hydralyte (clear, yellow)", kw: ["gatorade", "powerade", "sports drink", "hydralyte", "electrolyte"], safeUntil: 2, reason: "Clear or yellow sports drinks are OK — but avoid red/green/purple/blue/orange varieties" },
+  { name: "Red / blue / purple / green / orange sports drink", kw: ["red gatorade", "blue gatorade", "blue powerade", "red powerade", "purple powerade", "green powerade"], safeUntil: 1, reason: "Banned colours on Tue — pick a clear or yellow variety" },
+  { name: "Yellow / orange jelly", kw: ["jelly", "jello", "yellow jelly", "orange jelly"], safeUntil: 2, reason: "Only yellow or orange jelly on Tue — no red, green, purple, blue" },
+  { name: "Red jelly", kw: ["red jelly", "raspberry jelly", "strawberry jelly"], safeUntil: 1, reason: "Red — not allowed on Tue" },
+  { name: "Clear strained soup / broth", kw: ["broth", "stock", "consomme", "consommé", "bouillon", "chicken broth", "clear soup", "strained soup"], safeUntil: 2, reason: "Fat-free clear broth is approved (e.g. chicken noodle soup with the chicken and noodles strained out)" },
+  { name: "Chunky soup / minestrone", kw: ["chunky soup", "minestrone", "lentil soup", "pea soup"], safeUntil: 1, reason: "Chunky soups aren't clear fluids — not OK on Tue" },
+  { name: "Barley sugar", kw: ["barley sugar", "boiled lolly", "hard lolly"], safeUntil: 2, reason: "Approved on Dr Majid's clear-fluid list" },
+  { name: "Honey / sugar (in tea/coffee)", kw: ["sugar"], safeUntil: 2, reason: "OK to sweeten approved clear fluids" },
+
+  // Alcohol — not mentioned in this protocol, take it out
+  { name: "Beer", kw: ["beer", "cider", "lager", "ale"], safeUntil: 1, reason: "Not on the approved clear-fluid list for Tue. OK in moderation Sun/Mon if you tolerate it." },
+  { name: "Wine", kw: ["wine", "white wine", "red wine", "shiraz", "merlot", "pinot"], safeUntil: 0, reason: "Not on the approved clear-fluid list. Red wine isn't a clear fluid colour either." },
+  { name: "Spirits (clear)", kw: ["vodka", "gin", "tequila"], safeUntil: 1, reason: "Not on the approved list — best to skip alcohol close to the procedure" },
+  { name: "Whisky / rum / dark spirits", kw: ["whisky", "whiskey", "rum", "bourbon", "scotch"], safeUntil: 1, reason: "Not on the approved list" },
+
+  // Things people might ask about
+  { name: "Smoothie", kw: ["smoothie"], safeUntil: 1, reason: "Not clear — not OK on Tue" },
+  { name: "Milkshake", kw: ["milkshake"], safeUntil: 1, reason: "Not clear — not OK on Tue. OK Sun/Mon." },
+  { name: "Milo / hot chocolate", kw: ["milo", "hot chocolate", "ovaltine"], safeUntil: 1, reason: "Milky — not a clear fluid for Tue" },
+  { name: "Pizza", kw: ["pizza"], safeUntil: 1, reason: "Plain cheese / chicken pizza OK Sun/Mon (avoid mushroom-heavy or seeded toppings)" },
+  { name: "Burger", kw: ["burger", "hamburger", "cheeseburger"], safeUntil: 1, reason: "OK Sun/Mon — skip the seeded bun and the salad with skins" },
+  { name: "Curry", kw: ["curry"], safeUntil: 1, reason: "Plain curry OK — avoid lentil-based, whole-spice, or seed-heavy ones" },
 ];
 
 // =====================================================
 // DAY MATH
+// 0 = Sun 24 (3 days before)
+// 1 = Mon 25 (2 days before)
+// 2 = Tue 26 (1 day before — clear fluids + Picoprep)
+// 3 = Wed 27 (procedure day)
 // =====================================================
-function startOfDay(d) {
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-}
-function daysDiff(a, b) {
-  const ms = startOfDay(b) - startOfDay(a);
-  return Math.round(ms / 86400000);
-}
+function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function daysDiff(a, b) { return Math.round((startOfDay(b) - startOfDay(a)) / 86400000); }
 function currentDayIndex() {
-  // 0 = Sun (3 days before, no nuts/seeds/grains)
-  // 1 = Mon (White Diet)
-  // 2 = Tue (clear fluids)
-  // 3 = Wed (procedure)
-  // -1 = before prep window starts
-  // 4 = after procedure
-  const today = new Date();
-  const diff = daysDiff(today, PROCEDURE_DATE); // positive = days until procedure
+  const diff = daysDiff(new Date(), PROCEDURE_DATE);
   if (diff > 3) return -1;
   if (diff < 0) return 4;
   return 3 - diff;
 }
 
 const DAY_INFO = [
-  { idx: 0, label: "Sunday 24 May", short: "Sun 24", title: "No nuts, seeds, or whole grains",
-    lede: "Eat as you normally would today — just no nuts, no seeds (chia, sesame, flax, etc.), and no whole grains (oats, brown rice, wholemeal, multigrain, Weet-Bix).",
+  { idx: 0, label: "Sunday 24 May", short: "Sun 24", title: "No nuts, whole grains, skins, or seeds",
+    lede: "Eat normally — just no nuts, no seeds, no wholegrain bread or cereal, no skins on fruit/veg, no strawberries/citrus/grapes.",
     plan: [
-      "Avoid all nuts, seeds, and whole-grain foods",
-      "Eat normal meals otherwise (white bread, white rice, meat, dairy, most fruit & veg are fine)",
-      "Drink plenty of water",
-      "Pick up your Picoprep Orange (3-sachet box) from a pharmacy if you haven't already",
-      "Optional: get lanolin or similar cream for tomorrow night onwards"
+      "Avoid nuts, wholegrain bread/cereal, muesli, muscle bars",
+      "Avoid strawberries, citrus fruit, grapes, sultanas/raisins",
+      "Avoid skin on apple/pear/peach/nectarine, tomato, capsicum, eggplant, potato",
+      "Eat: white/wholemeal bread, lean meat/poultry/fish, peeled fruit & veg, eggs, cheese, ice cream, chocolate (no nuts)",
+      "Pick up 3 × Picoprep 15.5g sachets from a pharmacy",
+      "Confirm transport home Wed + responsible adult for Wed night"
     ]
   },
-  { idx: 1, label: "Monday 25 May", short: "Mon 25", title: "The White Diet",
-    lede: "Low-residue \"white\" foods only. Milk, white bread, white rice, plain chicken or white fish, vanilla ice cream, etc. See the Food reference below.",
+  { idx: 1, label: "Monday 25 May", short: "Mon 25", title: "Last full day of solid food",
+    lede: "Same food rules as yesterday. Tomorrow is clear fluids only — so today's your last day of solid food. Make sure prep is sorted.",
     plan: [
-      "Stick to White Diet foods all day (see reference below)",
-      "Still no nuts, seeds, or whole grains",
-      "Drink plenty of water",
-      "Tomorrow is clear fluids only — last solid food today",
-      "Have your Picoprep sachets and a glass for mixing ready"
+      "Same rules as yesterday — avoid nuts/wholegrain/skins/seeds/strawberries/citrus/grapes",
+      "Last solid food today (small, simple meals are easiest tomorrow)",
+      "Confirm: Picoprep sachets ready, transport sorted, someone for Wed night",
+      "Confirm Wed appointment time with Hunter Surgery if not already (0488 379 080)",
+      "Stock up on clear fluids for tomorrow: water, apple juice (no pulp), lemonade, Lucozade, broth, lemon cordial, yellow/orange jelly"
     ]
   },
-  { idx: 2, label: "Tuesday 26 May", short: "Tue 26", title: "Clear fluids only + Picoprep",
-    lede: "No solid food today. Clear fluids only — water, broth, apple/pear juice (no pulp), black tea/coffee, lemonade, clear sports drinks. Nothing red, blue, or purple.",
+  { idx: 2, label: "Tuesday 26 May", short: "Tue 26", title: "Clear fluids only + Picoprep ×3",
+    lede: "No solid food at all. Clear fluids only — water, lemonade, Lucozade, apple juice (no pulp), black tea/coffee (no milk), clear broth, yellow/orange jelly. No red, green, purple, blue, or orange colours.",
     plan: [
-      "Clear fluids only all day — no solid food",
-      "Apply lanolin/cream to anal area before starting Picoprep",
-      "<strong>3:00 pm:</strong> First Picoprep sachet in 250ml warm water, sip over 5–10 min",
-      "Follow with 3–4 glasses of clear fluid over the next while",
-      "<strong>6:00 pm:</strong> Second Picoprep sachet, same way",
-      "Follow with more clear fluid",
-      "At least one glass of approved clear fluid every hour through the day",
-      "Nothing red, blue, or purple in colour"
+      "Clear fluids only — no solid food",
+      "<strong>1:00 pm:</strong> Picoprep dose 1 in 250ml warm water. Drink slowly.",
+      "Follow with 1 glass clear fluid per hour (or 1L total)",
+      "<strong>5:00 pm:</strong> Picoprep dose 2 — same way",
+      "Keep sipping clear fluids",
+      "<strong>9:00 pm:</strong> Picoprep dose 3 (final) — same way",
+      "Keep drinking clear fluids until 6 hrs before your Wed appointment",
+      "Nothing red, green, purple, blue, or orange in colour"
     ]
   },
-  { idx: 3, label: "Wednesday 27 May", short: "Wed 27", title: "Procedure day · nil by mouth",
-    lede: "Nothing to eat, drink, suck or chew — except your final Picoprep sachet and water to take with it. Arrive at the hospital admissions area on time.",
+  { idx: 3, label: "Wednesday 27 May", short: "Wed 27", title: "Procedure day · fast 6 hrs before",
+    lede: "Fast for 6 hours before your appointment — no food or drinks. Take usual tablets with a sip of water. A responsible adult must take you home and stay overnight.",
     plan: [
-      "<strong id='dose3Plan'>5:00 am:</strong> Final Picoprep sachet + water (4–5 hours before admission)",
-      "Water is OK after the final sachet — otherwise nil by mouth",
-      "Take any regular meds with a sip of water in the early morning",
-      "Arrive at Beechnut admissions at your scheduled time",
-      "Bring your Medicare/insurance, list of medications, and any other paperwork the hospital requested"
+      "<strong id='fastFromPlan'>Stop all food &amp; drink: 3:30 am</strong> (6 hrs before appointment)",
+      "Take your usual tablets with only a sip of water",
+      "If diabetic: bring your morning insulin/tablets",
+      "Bring Medicare/health-fund cards, medication list, comfy clothes, phone+charger",
+      "Confirm responsible adult is picking you up &amp; staying overnight",
+      "Plan to be at hospital ~6 hours total (procedure + recovery)"
     ]
   }
 ];
 
 // =====================================================
-// RENDER BANNER + TODAY
+// RENDER
 // =====================================================
 function renderBanner() {
   const idx = currentDayIndex();
@@ -651,22 +772,22 @@ function renderBanner() {
 
   document.getElementById("todayLabel").textContent = "Today · " + todayStr;
 
-  let countdownText;
-  if (diff > 1) countdownText = diff + " days to go";
-  else if (diff === 1) countdownText = "Tomorrow";
-  else if (diff === 0) countdownText = "Today is the day";
-  else countdownText = "After procedure";
-  document.getElementById("countdownLabel").textContent = countdownText;
+  let countdown;
+  if (diff > 1) countdown = diff + " days to go";
+  else if (diff === 1) countdown = "Tomorrow";
+  else if (diff === 0) countdown = "Today is the day";
+  else countdown = "After procedure";
+  document.getElementById("countdownLabel").textContent = countdown;
 
   if (idx >= 0 && idx <= 3) {
     document.getElementById("phaseLabel").textContent = DAY_INFO[idx].title;
     document.getElementById("ledeLabel").textContent = DAY_INFO[idx].lede;
   } else if (idx === -1) {
     document.getElementById("phaseLabel").textContent = "Prep starts soon";
-    document.getElementById("ledeLabel").textContent = "Your nuts/seeds/grains restriction begins on Sunday 24 May.";
+    document.getElementById("ledeLabel").textContent = "Restrictions begin Sun 24 May (3 days before).";
   } else {
     document.getElementById("phaseLabel").textContent = "All done";
-    document.getElementById("ledeLabel").textContent = "Procedure complete — eat as advised by the hospital.";
+    document.getElementById("ledeLabel").textContent = "Procedure complete — follow recovery advice.";
   }
 }
 
@@ -690,13 +811,8 @@ function renderTimetable() {
     let cls = "day-row";
     if (d.idx === idx) cls += " is-today";
     else if (d.idx < idx) cls += " is-past";
-    return `
-      <div class="${cls}">
-        <div class="day-label">${d.idx === idx ? "Today" : (d.idx === idx + 1 ? "Tomorrow" : d.short)}</div>
-        <div class="day-date">${d.label}</div>
-        <div class="day-do">${d.title}</div>
-      </div>
-    `;
+    const label = d.idx === idx ? "Today" : (d.idx === idx + 1 ? "Tomorrow" : d.short);
+    return `<div class="${cls}"><div class="day-label">${label}</div><div class="day-date">${d.label}</div><div class="day-do">${d.title}</div></div>`;
   }).join("");
 }
 
@@ -706,19 +822,11 @@ function renderTimetable() {
 function checkFood(query) {
   const q = query.trim().toLowerCase();
   if (!q) return null;
-
-  // Find best match — longest matching keyword wins
-  let best = null;
-  let bestLen = 0;
+  let best = null, bestLen = 0;
   for (const food of FOODS) {
     for (const kw of food.kw) {
       if (q.includes(kw) || kw.includes(q)) {
-        // Score by length of the keyword that matched (longer = more specific)
-        const score = kw.length;
-        if (score > bestLen) {
-          best = food;
-          bestLen = score;
-        }
+        if (kw.length > bestLen) { best = food; bestLen = kw.length; }
       }
     }
   }
@@ -738,38 +846,33 @@ function renderFoodResult(query) {
         <div class="icon">?</div>
         <div class="body">
           <div class="verdict">Not in my list</div>
-          <div class="reason">I don't have "${escapeHtml(query)}" specifically. Check the Food reference below, or err on the side of caution. Quick rules: today avoid <strong>nuts, seeds, whole grains</strong>. Mon White Diet only. Tue clear fluids only, nothing red/blue/purple.</div>
+          <div class="reason">I don't have "${escapeHtml(query)}" specifically. Quick rules: avoid nuts, wholegrains, seeds, skins, strawberries, citrus, grapes, sultanas. On Tue: clear fluids only, nothing red/green/purple/blue/orange. When unsure, skip it.</div>
         </div>
-      </div>
-    `;
+      </div>`;
     return;
   }
 
-  const safeToday = (idx === -1 && food.safeUntil >= 0) || (idx >= 0 && idx <= food.safeUntil) || (food.safeUntil === 3);
-  const everSafe = food.safeUntil !== -1;
-
   let cls, icon, verdict, extra = "";
+  const effectiveIdx = (idx < 0) ? 0 : (idx > 3 ? 3 : idx);
 
   if (food.safeUntil === -1) {
     cls = "result-no"; icon = "✕";
     verdict = "Avoid — " + food.name;
-  } else if (idx > food.safeUntil) {
+  } else if (effectiveIdx > food.safeUntil) {
     cls = "result-no"; icon = "✕";
     verdict = "Not today — " + food.name;
     const lastDay = DAY_INFO[food.safeUntil];
-    extra = lastDay ? `Was OK up to ${lastDay.short}, not from today (${DAY_INFO[idx]?.short || "now"} onwards).` : "";
-  } else if (idx === food.safeUntil) {
+    if (lastDay) extra = `Was OK up to ${lastDay.short}.`;
+  } else if (effectiveIdx === food.safeUntil) {
     cls = "result-warn"; icon = "!";
     verdict = "OK today — " + food.name + " (last day)";
-    const tomorrow = DAY_INFO[idx + 1];
-    extra = tomorrow ? `Not allowed from tomorrow (${tomorrow.short}: ${tomorrow.title.toLowerCase()}).` : "";
+    const tomorrow = DAY_INFO[effectiveIdx + 1];
+    if (tomorrow) extra = `Not allowed from tomorrow (${tomorrow.short}: ${tomorrow.title.toLowerCase()}).`;
   } else {
     cls = "result-ok"; icon = "✓";
     verdict = "Yes — " + food.name;
     const lastDay = DAY_INFO[food.safeUntil];
-    if (lastDay && food.safeUntil < 3) {
-      extra = `OK through ${lastDay.short}.`;
-    }
+    if (lastDay && food.safeUntil < 3) extra = `OK through ${lastDay.short}.`;
   }
 
   out.innerHTML = `
@@ -779,8 +882,7 @@ function renderFoodResult(query) {
         <div class="verdict">${escapeHtml(verdict)}</div>
         <div class="reason">${escapeHtml(food.reason)}${extra ? " " + escapeHtml(extra) : ""}</div>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 function escapeHtml(s) {
@@ -788,47 +890,35 @@ function escapeHtml(s) {
 }
 
 // =====================================================
-// PICOPREP — admission time → dose 3 time
+// FASTING TIME (6 hrs before appointment)
 // =====================================================
-function updateDose3() {
+function updateFasting() {
   const admit = document.getElementById("admitTime").value || "09:30";
   const [h, m] = admit.split(":").map(Number);
-  // 4.5 hours before admission
-  let totalMin = h * 60 + m - (4 * 60 + 30);
-  if (totalMin < 0) totalMin += 24 * 60;
+  let totalMin = h * 60 + m - 360; // 6 hours
+  let dayLabel = "Wed";
+  if (totalMin < 0) { totalMin += 24 * 60; dayLabel = "Tue"; }
   const dh = Math.floor(totalMin / 60);
   const dm = totalMin % 60;
   const ampm = dh >= 12 ? "pm" : "am";
   const display = `${((dh + 11) % 12) + 1}:${String(dm).padStart(2,"0")} ${ampm}`;
-  document.getElementById("dose3Time").textContent = display;
-
-  // Also update the time in today's plan (Wed) if visible
-  const planEl = document.getElementById("dose3Plan");
-  if (planEl) planEl.innerHTML = display + ":";
-
-  // Save
+  document.getElementById("fastFromLine").innerHTML = `Stop all food &amp; drink: <strong>${display} ${dayLabel}</strong>`;
+  const plan = document.getElementById("fastFromPlan");
+  if (plan) plan.innerHTML = `Stop all food &amp; drink: ${display} ${dayLabel} (6 hrs before appointment)`;
   localStorage.setItem("ccp_admit", admit);
-
-  // Update "X hrs before admission" line
-  document.getElementById("dose3When").textContent = `Wed 27 May · 4½ hrs before ${displayTime(admit)} admission`;
-}
-function displayTime(t) {
-  const [h, m] = t.split(":").map(Number);
-  const ampm = h >= 12 ? "pm" : "am";
-  return `${((h + 11) % 12) + 1}:${String(m).padStart(2,"0")} ${ampm}`;
 }
 
 // =====================================================
-// DOSE CHECKS + HYDRATION (localStorage)
+// DOSE CHECKS + HYDRATION + CHECKLIST (localStorage)
 // =====================================================
-function loadChecks() {
+function loadDoseChecks() {
   const doses = JSON.parse(localStorage.getItem("ccp_doses") || "{}");
   document.querySelectorAll(".dose-check").forEach(cb => {
     cb.checked = !!doses[cb.dataset.dose];
     cb.parentElement.querySelector(".dose-num").classList.toggle("done", cb.checked);
   });
 }
-function saveChecks() {
+function saveDoseChecks() {
   const doses = {};
   document.querySelectorAll(".dose-check").forEach(cb => {
     doses[cb.dataset.dose] = cb.checked;
@@ -848,13 +938,27 @@ function renderGlasses() {
     g.setAttribute("aria-label", "Glass " + (i + 1));
     g.addEventListener("click", () => {
       const cur = parseInt(localStorage.getItem("ccp_glasses") || "0", 10);
-      const newCount = i < cur ? i : i + 1; // tapping a filled glass un-fills back to here; empty fills up to here
+      const newCount = i < cur ? i : i + 1;
       localStorage.setItem("ccp_glasses", String(newCount));
       renderGlasses();
     });
     grid.appendChild(g);
   }
   document.getElementById("glassCount").textContent = filled;
+}
+
+function loadChecklist() {
+  const state = JSON.parse(localStorage.getItem("ccp_checklist") || "{}");
+  document.querySelectorAll("#checklist input[type=checkbox]").forEach(cb => {
+    cb.checked = !!state[cb.id];
+  });
+}
+function saveChecklist() {
+  const state = {};
+  document.querySelectorAll("#checklist input[type=checkbox]").forEach(cb => {
+    state[cb.id] = cb.checked;
+  });
+  localStorage.setItem("ccp_checklist", JSON.stringify(state));
 }
 
 // =====================================================
@@ -866,13 +970,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTimetable();
   renderGlasses();
 
-  // Restore admit time
   const savedAdmit = localStorage.getItem("ccp_admit");
   if (savedAdmit) document.getElementById("admitTime").value = savedAdmit;
-  updateDose3();
-  document.getElementById("admitTime").addEventListener("input", updateDose3);
+  updateFasting();
+  document.getElementById("admitTime").addEventListener("input", updateFasting);
 
-  // Food checker
   const input = document.getElementById("foodInput");
   input.addEventListener("input", e => renderFoodResult(e.target.value));
   document.querySelectorAll(".suggestion").forEach(b => {
@@ -883,11 +985,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Dose checkboxes
-  loadChecks();
-  document.querySelectorAll(".dose-check").forEach(cb => cb.addEventListener("change", saveChecks));
+  loadDoseChecks();
+  document.querySelectorAll(".dose-check").forEach(cb => cb.addEventListener("change", saveDoseChecks));
 
-  // Hydration reset
+  loadChecklist();
+  document.querySelectorAll("#checklist input[type=checkbox]").forEach(cb => cb.addEventListener("change", saveChecklist));
+
   document.getElementById("resetGlasses").addEventListener("click", () => {
     localStorage.setItem("ccp_glasses", "0");
     renderGlasses();
